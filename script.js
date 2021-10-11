@@ -12,10 +12,7 @@ function calculateTip() {
     let amount = document.querySelector('#amount').value;
     let persons = document.querySelector('#persons').value;
     let service = document.querySelector('#services').value;
-    
-    /*if statement will work when user presses
-          calculate without entering values. */
-    //so will display an alert box and return.
+
     if (amount === '' && service === 'Select') {
         alert("Please enter valid values");
         return;
@@ -29,13 +26,11 @@ function calculateTip() {
         //if there are more than one person we will display each.
         document.querySelector('#each').style.display = 'block';
 
-    /*calculating the tip by multiplying total-bill and type of
-     service; then dividing it by number of persons.*/
-    //fixing the total amount upto 2 digits of decimal
-    let total = (amount * service) / persons;
-    total = total.toFixed(2);
+    const total =  (amount * (service) / 100) / persons;
+    const totalAmount = Number(total) + Number(amount);
 
-    //finally displaying the tip value
     document.querySelector('.tip').style.display = 'block';
     document.querySelector('#total').innerHTML = total;
+    document.querySelector('.total-Amount').style.display = 'block';
+    document.querySelector('#total-amount').innerHTML = totalAmount;
 }
